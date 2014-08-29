@@ -96,7 +96,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 #ifdef __IPHONE_8_0
 	NSDictionary *item = @{ AppExtensionVersionNumberKey: VERSION_NUMBER, AppExtensionURLStringKey: URLString };
 
-	__weak typeof (self) miniMe = self;
+    __typeof__(self) __weak miniMe = self;
 
 	UIActivityViewController *activityViewController = [self activityViewControllerForItem:item viewController:viewController sender:sender typeIdentifier:kUTTypeAppExtensionFindLoginAction];
 	activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
@@ -117,7 +117,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 			return;
 		}
 
-		__strong typeof(self) strongMe = miniMe;
+		__typeof__(self) __strong strongMe = miniMe;
 		[strongMe processExtensionItem:returnedItems[0] completion:^(NSDictionary *loginDictionary, NSError *error) {
 			if (completion) {
 				completion(loginDictionary, error);
@@ -154,7 +154,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 		newLoginAttributesDict[AppExtensionPasswordGereratorOptionsKey] = passwordGenerationOptions;
 	}
 
-	__weak typeof (self) miniMe = self;
+	__typeof__(self) __weak miniMe = self;
 
 	UIActivityViewController *activityViewController = [self activityViewControllerForItem:newLoginAttributesDict viewController:viewController sender:sender typeIdentifier:kUTTypeAppExtensionSaveLoginAction];
 	activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
@@ -175,7 +175,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 			return;
 		}
 		
-		__strong typeof(self) strongMe = miniMe;
+		__typeof__(self) __strong strongMe = miniMe;
 		[strongMe processExtensionItem:returnedItems[0] completion:^(NSDictionary *loginDictionary, NSError *error) {
 			if (completion) {
 				completion(loginDictionary, error);
@@ -210,7 +210,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 		item[AppExtensionPasswordGereratorOptionsKey] = passwordGenerationOptions;
 	}
 
-	__weak typeof (self) miniMe = self;
+	__typeof__(self) __weak miniMe = self;
 	UIActivityViewController *activityViewController = [self activityViewControllerForItem:item viewController:viewController sender:sender typeIdentifier:kUTTypeAppExtensionChangePasswordAction];
 
 	activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
@@ -231,7 +231,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 			return;
 		}
 
-		__strong typeof(self) strongMe = miniMe;
+		__typeof__(self) __strong strongMe = miniMe;
 		[strongMe processExtensionItem:returnedItems[0] completion:^(NSDictionary *loginDictionary, NSError *error) {
 			if (completion) {
 				completion(loginDictionary, error);
@@ -440,7 +440,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 {
 	NSDictionary *item = @{ AppExtensionVersionNumberKey : VERSION_NUMBER, AppExtensionURLStringKey : URLString, AppExtensionWebViewPageDetails : collectedPageDetails };
 
-	__weak typeof (self) miniMe = self;
+	__typeof__(self) __weak miniMe = self;
 
 	UIActivityViewController *activityViewController = [self activityViewControllerForItem:item viewController:forViewController sender:sender typeIdentifier:kUTTypeAppExtensionFillWebViewAction];
 	activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
@@ -461,7 +461,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 			return;
 		}
 
-		__strong typeof(self) strongMe = miniMe;
+		__typeof__(self) __strong strongMe = miniMe;
 		[strongMe processExtensionItem:returnedItems[0] completion:^(NSDictionary *loginDictionary, NSError *error) {
 			if (!loginDictionary) {
 				if (completion) {
@@ -471,7 +471,7 @@ NSInteger const AppExtensionErrorCodeUnexpectedData = 6;
 				return;
 			}
 			
-			__strong typeof(self) strongMe2 = miniMe;
+			__typeof__(self) __strong strongMe2 = miniMe;
 			NSString *fillScript = loginDictionary[AppExtensionWebViewPageFillScript];
 			[strongMe2 executeFillScript:fillScript inWebView:webView completion:^(BOOL success, NSError *error) {
 				if (completion) {
